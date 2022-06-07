@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:userId", async (req, res, next) => {
   try {
-    const games = await Party.findAll({
+    const parties = await Party.findAll({
       include: {
         model: User,
         where: {
@@ -23,7 +23,7 @@ router.get("/:userId", async (req, res, next) => {
         },
       },
     });
-    res.json(games);
+    res.json(parties);
   } catch (err) {
     next(err);
   }

@@ -23,9 +23,12 @@ const PartyList = () => {
 
       <div className="party-list">
         {parties.map((party) => {
+          const dateObj = new Date(party.date);
           return (
-            <div id="ind-party" key={party.id}>
-              <Party party={party} />
+            <div className="single-party" key={party.id}>
+              <h3>{party.name}</h3>
+              <h5>Where: {party.location}</h5>
+              <h5>When: {dateObj.toLocaleString("en-US")}</h5>
             </div>
           );
         })}
