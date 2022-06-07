@@ -13,6 +13,9 @@ const Party = db.define("party", {
   date: {
     type: Sequelize.DATE,
   },
+  host: {
+    type: Sequelize.STRING,
+  },
   recommendedGames: {
     type: Sequelize.ARRAY(Sequelize.STRING),
   },

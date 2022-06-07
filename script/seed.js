@@ -98,11 +98,13 @@ const parties = [
     name: "Friday Game Night",
     location: "Mike & Maria's Apartment",
     date: new Date("June 10, 2022 18:00"),
+    host: "mikwa",
   },
   {
     name: "Board Game Date Night",
     location: "Lauren & David's Home",
     date: new Date("June 12, 2022 19:00"),
+    host: "dmakian",
   },
 ];
 

@@ -2,6 +2,7 @@ import axios from "axios";
 
 // Action constants
 const SET_GAMES = "SET_GAMES";
+const ADD_GAME = "DELETE_GAME";
 const DELETE_GAME = "DELETE_GAME";
 
 // Action creators

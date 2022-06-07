@@ -106,7 +106,7 @@ export const addFriend = (userId, username, history) => {
         `/api/users/${primaryUser.data.username}/friends`
       );
 
-      dispatch(_unfriend(updatedPrimaryFriends.data));
+      dispatch(_addFriend(updatedPrimaryFriends.data));
       history.push("/");
       history.push("/friends");
     } catch (error) {

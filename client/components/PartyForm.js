@@ -1,68 +1,56 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import PlayPreferences from "./CategoryPreferences";
-import { updatePreferences } from "../store/preferences";
+import { addParty } from "../store/party";
 
 const PartyForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // const userId = useSelector((state) => state.auth.id);
-  // const [duration, setDuration] = useState("");
-  // const [complexity, setComplexity] = useState("");
-  // const categories = useSelector((state) => state.tempCategories);
+  const userId = useSelector((state) => state.auth.id);
+  const username = useSelector((state) => state.auth.username);
+  const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
+  const [date, setDate] = useState("");
 
-  // const handleSubmit = (evt) => {
-  //   evt.preventDefault();
-  //   dispatch(
-  //     updatePreferences(userId, duration, complexity, categories, history)
-  //   );
-  // };
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    dispatch(addParty(userId, username, name, location, date, history));
+  };
 
   return (
-    <div></div>
-    // <form id="pref-form" onSubmit={handleSubmit}>
-    //   <div>
-    //     <label htmlFor="duration">Duration:</label>
-    //     <select
-    //       name="duration"
-    //       value={duration}
-    //       onChange={(e) => setDuration(e.target.value)}
-    //     >
-    //       <option value="30-60 min">30-60 minutes</option>
-    //       <option value="1-2 hrs">1-2 hours</option>
-    //       <option value="2-3 hrs">2-3 hours</option>
-    //       <option value="3+ hrs">3+ hours</option>
-    //     </select>
-    //     <PlayPreferences />
-    //     <label htmlFor="complex">Complexity:</label>
-    //     <input
-    //       type="radio"
-    //       name="complex"
-    //       value="easy"
-    //       onChange={() => setComplexity("easy")}
-    //     />{" "}
-    //     Easy <br />
-    //     <input
-    //       type="radio"
-    //       name="complex"
-    //       value="moderate"
-    //       onChange={() => setComplexity("moderate")}
-    //     />{" "}
-    //     Moderate <br />
-    //     <input
-    //       type="radio"
-    //       name="complex"
-    //       value="complex"
-    //       onChange={() => setComplexity("complex")}
-    //     />{" "}
-    //     Complex <br />
-    //     <div>
-    //       <button type="submit">Submit</button>
-    //     </div>
-    //   </div>
-    // </form>
+    <form id="party-form" onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="name">Party Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="location">Location:</label>
+        <input
+          type="text"
+          name="location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="date">When:</label>
+        <input
+          type="datetime-local"
+          name="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
   );
 };
 
