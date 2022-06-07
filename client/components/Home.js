@@ -1,22 +1,21 @@
-/* eslint-disable no-unused-vars */
-
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-export const Home = (props) => {
-  const { username } = props;
+export const Home = () => {
+  const name = useSelector((state) => state.auth.displayName);
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <h3 id="welcome-message">Welcome back, {name}</h3>
+      <Link to="/parties">Parties</Link> <br />
+      <Link to="/new-party">Host New Party</Link> <br />
+      <Link to="/update-preferences">Game Preferences</Link> <br />
+      <Link to="/game-library">Game Library</Link> <br />
+      <Link to="/friends">Friends</Link>
+      <br />
     </div>
   );
 };
 
-const mapState = (state) => {
-  return {
-    username: state.auth.username,
-  };
-};
-
-export default connect(mapState)(Home);
+export default Home;

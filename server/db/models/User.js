@@ -31,6 +31,10 @@ const User = db.define("user", {
   complexityPref: {
     type: Sequelize.ENUM("easy", "moderate", "complex"),
   },
+  friendUsernames: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    defaultValue: [],
+  },
 });
 
 module.exports = User;

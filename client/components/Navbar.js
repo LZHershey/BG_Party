@@ -1,46 +1,40 @@
-/* eslint-disable no-unused-vars */
-
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../store";
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <h1>App Template</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-);
+const Navbar = () => {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
 
-const mapState = (state) => {
-  return {
-    isLoggedIn: !!state.auth.id,
-  };
+  return (
+    <div>
+      <nav>
+        {isLoggedIn ? (
+          <div className="nav-links">
+            <div>
+              <Link to="/home">Home</Link>
+            </div>
+            <div>
+              <a href="#" onClick={() => dispatch(logout())}>
+                Logout
+              </a>
+            </div>
+          </div>
+        ) : (
+          <div className="nav-links">
+            <div>
+              <Link to="/login">Login</Link>
+            </div>
+            <div>
+              <Link to="/signup">Sign Up</Link>
+            </div>
+          </div>
+        )}
+      </nav>
+      <hr />
+    </div>
+  );
 };
 
-const mapDispatch = (dispatch) => {
-  return {
-    handleClick() {
-      dispatch(logout());
-    },
-  };
-};
-
-export default connect(mapState, mapDispatch)(Navbar);
+export default Navbar;

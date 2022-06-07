@@ -1,63 +1,50 @@
-/* eslint-disable no-unused-vars */
-
-import React from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { authenticate } from "../store";
 
-const AuthForm = (props) => {
-  const { name, displayName, handleSubmit, error } = props;
+const AuthForm = ({ formName, displayName }) => {
+  const error = useSelector((state) => state.auth.error);
+  const dispatch = useDispatch();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    dispatch(authenticate(username, password, formName));
+  };
 
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="username">
-            <small>Username</small>
-          </label>
-          <input name="username" type="text" />
+      <form onSubmit={handleSubmit} name={formName}>
+        <div className="login-form">
+          <div>
+            <label htmlFor="username">
+              <small>Username:</small>
+            </label>
+            <input
+              name="username"
+              type="text"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">
+              <small>Password:</small>
+            </label>
+            <input
+              name="password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div>
+            <button type="submit">{displayName}</button>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
         </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
       </form>
     </div>
   );
 };
 
-const mapLogin = (state) => {
-  return {
-    name: "login",
-    displayName: "Login",
-    error: state.auth.error,
-  };
-};
-
-const mapSignup = (state) => {
-  return {
-    name: "signup",
-    displayName: "Sign Up",
-    error: state.auth.error,
-  };
-};
-
-const mapDispatch = (dispatch) => {
-  return {
-    handleSubmit(evt) {
-      evt.preventDefault();
-      const formName = evt.target.name;
-      const username = evt.target.username.value;
-      const password = evt.target.password.value;
-      dispatch(authenticate(username, password, formName));
-    },
-  };
-};
-
-export const Login = connect(mapLogin, mapDispatch)(AuthForm);
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm);
+export default AuthForm;

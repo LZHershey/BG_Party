@@ -1,5 +1,12 @@
 body {
-  font-family: sans-serif;
+  font-family: Verdana, sans-serif;
+  background-color: #7c9eb2;
+  color: #231123;
+}
+
+#banner-image {
+  width: 100%;
+  height: auto;
 }
 
 a {
@@ -10,6 +17,19 @@ label {
   display: block;
 }
 
+#nav-header {
+  text-align: center;
+
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
 nav a {
   display: inline-block;
   margin: 1em;
@@ -17,5 +37,23 @@ nav a {
 
 form div {
   margin: 1em;
-  display: inline-block;
 }
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  background-color: #7c9eb2;
+  border-color: #52528c;
+}
+
+#welcome-message {
+  color: #372554;
+  text-align: center;
+}
+

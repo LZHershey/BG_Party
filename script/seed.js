@@ -13,6 +13,7 @@ const users = [
     durationPref: "30-60 min",
     playPref: ["deck-building", "strategy", "party"],
     complexityPref: "easy",
+    friendUsernames: ["dmakian"],
   },
   {
     username: "dmakian",
@@ -21,6 +22,7 @@ const users = [
     durationPref: "3+ hrs",
     playPref: ["drafting", "engine-building", "area-control"],
     complexityPref: "complex",
+    friendUsernames: ["laurenzh"],
   },
   {
     username: "mred",
