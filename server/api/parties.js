@@ -18,12 +18,18 @@ router.get("/:userId", async (req, res, next) => {
     const parties = await Party.findAll({
       include: {
         model: User,
-        where: {
-          id: req.params.userId,
-        },
       },
     });
     res.json(parties);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/party/:partyId", async (req, res, next) => {
+  try {
+    const party = await Party.findByPk(req.params.partyId, { include: User });
+    res.json(party);
   } catch (err) {
     next(err);
   }
@@ -45,6 +51,24 @@ router.put("/:partyId/:userId", async (req, res, next) => {
     await user.addParty(party);
     await party.addUser(user);
     res.send(party);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/:partyId", async (req, res, next) => {
+  try {
+    let partyToDelete = await Party.findByPk(req.params.partyId);
+    if (!partyToDelete) {
+      let err = new Error("Cannot remove party - no party found with that ID");
+      err.status = 404;
+      next(err);
+    } else {
+      const deletedParty = await Party.destroy({
+        where: { id: req.params.partyId },
+      });
+      res.sendStatus(204);
+    }
   } catch (error) {
     next(error);
   }

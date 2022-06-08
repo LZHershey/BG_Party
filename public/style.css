@@ -35,6 +35,10 @@ nav a {
   margin: 1em;
 }
 
+.nav{
+  border:none;
+}
+
 form div {
   margin: 1em;
 }

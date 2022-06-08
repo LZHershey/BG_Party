@@ -7,7 +7,7 @@ import tempCategories from "./tempPref";
 import userGames from "./games";
 import userParties from "./parties";
 import friends from "./friends";
-import newParty from "./party";
+import party from "./party";
 
 const reducer = combineReducers({
   auth,
@@ -15,7 +15,7 @@ const reducer = combineReducers({
   userGames,
   userParties,
   friends,
-  newParty,
+  party,
 });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))

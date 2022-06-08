@@ -1,9 +1,10 @@
 import axios from "axios";
 
-// Action constants
+// Action constant
 const ADD_PARTY = "ADD_PARTY";
+const SET_PARTY = "SET_PARTY";
 
-// Action creators
+// Action creator
 
 const _addParty = (newParty) => {
   return {
@@ -12,7 +13,25 @@ const _addParty = (newParty) => {
   };
 };
 
+const setParty = (party) => {
+  return {
+    type: SET_PARTY,
+    party,
+  };
+};
+
 // Thunks
+
+export const fetchParty = (partyId) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`/api/parties/party/${partyId}`);
+      dispatch(setParty(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 
 export const addParty = (userId, username, name, location, date, history) => {
   return async (dispatch) => {
@@ -41,6 +60,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_PARTY:
       return action.newParty;
+    case SET_PARTY:
+      return action.party;
     default:
       return state;
   }
