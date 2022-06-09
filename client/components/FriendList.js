@@ -7,10 +7,9 @@ import Friend from "./Friend";
 
 const FriendList = () => {
   const dispatch = useDispatch();
-
+  const friends = useSelector((state) => state.friends);
   const userId = useSelector((state) => state.auth.id);
   const username = useSelector((state) => state.auth.username);
-  const friends = useSelector((state) => state.friends);
 
   const [friendUsername, setFriendUsername] = useState("");
 
@@ -61,7 +60,10 @@ const FriendList = () => {
         <div>
           <button
             type="submit"
-            onClick={() => dispatch(addFriend(userId, friendUsername, history))}
+            onClick={() => {
+              dispatch(addFriend(userId, friendUsername, history));
+              setFriendUsername("");
+            }}
           >
             Add
           </button>

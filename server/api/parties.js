@@ -18,6 +18,9 @@ router.get("/:userId", async (req, res, next) => {
     const parties = await Party.findAll({
       include: {
         model: User,
+        include: {
+          model: Game,
+        },
       },
     });
     res.json(parties);
@@ -28,7 +31,9 @@ router.get("/:userId", async (req, res, next) => {
 
 router.get("/party/:partyId", async (req, res, next) => {
   try {
-    const party = await Party.findByPk(req.params.partyId, { include: User });
+    const party = await Party.findByPk(req.params.partyId, {
+      include: { model: User, include: { model: Game } },
+    });
     res.json(party);
   } catch (err) {
     next(err);

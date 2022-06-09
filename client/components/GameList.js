@@ -24,14 +24,14 @@ const GameList = () => {
       <div className="game-list">
         {games.map((game) => {
           return (
-            <div id="ind-game" key={game.id}>
+            <div className="ind-game" key={game.id}>
               <Game game={game} />
               <button
                 type="submit"
                 className="delete-button"
                 onClick={() => dispatch(deleteGame(game.id, history))}
               >
-                X
+                Remove
               </button>
             </div>
           );

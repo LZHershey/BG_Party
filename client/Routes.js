@@ -9,6 +9,7 @@ import GameList from "./components/GameList";
 import FriendList from "./components/FriendList";
 import PartyList from "./components/PartyList";
 import PartyForm from "./components/PartyForm";
+import SinglePartyDetails from "./components/SinglePartyDetails";
 
 class Routes extends Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ class Routes extends Component {
             <Route path="/friends" component={FriendList} />
             <Route path="/parties" component={PartyList} />
             <Route path="/new-party" component={PartyForm} />
+            <Route path="/party/:partyId" component={SinglePartyDetails} />
             <Redirect to="/home" />
           </Switch>
         ) : (

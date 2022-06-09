@@ -1,6 +1,6 @@
 import React from "react";
 import { deleteParty } from "../store/parties";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 const Party = (props) => {
@@ -10,10 +10,14 @@ const Party = (props) => {
 
   const dateObj = new Date(party.date);
   const username = useSelector((state) => state.auth.username);
-  const partyGoers = party.users.map((user) => user.displayName);
+  let partyGoers = [];
+
+  if (party.users) {
+    partyGoers = party.users.map((user) => user.displayName);
+  }
 
   return (
-    <div className="single-party" key={party.id}>
+    <div className="party-text">
       <h3>{party.name}</h3>
       <h5>Where: {party.location}</h5>
       <h5>When: {dateObj.toLocaleString("en-US")}</h5>
@@ -31,4 +35,3 @@ const Party = (props) => {
 };
 
 export default Party;
-``;

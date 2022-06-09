@@ -7,13 +7,13 @@ const Game = (props) => {
     <div className="single-game">
       {/* <img src={game.imgUrl} /> */}
       {/* Need to figure out how to access image */}
-      <h3>{game.name}</h3>
-      <h5>
+      <h3 id="game-name">{game.name}</h3>
+      <p>
         Players: {game.minPlayers}-{game.maxPlayers}
-      </h5>
-      <h5>Duration: {game.duration}</h5>
-      <h5>Category: {game.playStyle.join(", ")}</h5>
-      <h5>Complexity: {game.complexity}</h5>
+      </p>
+      <p>Duration: {game.duration}</p>
+      <p>Category: {game.playStyle.join(", ")}</p>
+      <p>Complexity: {game.complexity}</p>
     </div>
   );
 };

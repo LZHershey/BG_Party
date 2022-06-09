@@ -8,12 +8,49 @@ export const Home = () => {
   return (
     <div>
       <h3 id="welcome-message">Welcome back, {name}</h3>
-      <Link to="/parties">Parties</Link> <br />
-      <Link to="/new-party">Host New Party</Link> <br />
-      <Link to="/update-preferences">Game Preferences</Link> <br />
-      <Link to="/game-library">Game Library</Link> <br />
-      <Link to="/friends">Friends</Link>
-      <br />
+      <div className="home-link-list">
+        <div className="home-link-div">
+          <Link to="/parties">
+            <div id="home-link">
+              <i className="flaticon-confetti"></i>
+              <h3>Parties</h3>
+            </div>
+          </Link>
+        </div>
+        <div className="home-link-div">
+          <Link to="/new-party">
+            <div id="home-link">
+              <i className="flaticon-flags"></i>
+              <h3>Host New Party</h3>
+            </div>
+          </Link>
+        </div>
+
+        <div className="home-link-div">
+          <Link to="/game-library">
+            <div id="home-link">
+              <i className="flaticon-board-game"></i>
+              <h3>Game Library</h3>
+            </div>
+          </Link>
+        </div>
+        <div className="home-link-div">
+          <Link to="/friends">
+            <div id="home-link">
+              <i className="flaticon-friends"></i>
+              <h3>Friends</h3>
+            </div>
+          </Link>
+        </div>
+        <div className="home-link-div">
+          <Link to="/update-preferences">
+            <div id="home-link">
+              <i className="flaticon-settings"></i>
+              <h3>Game Preferences</h3>
+            </div>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

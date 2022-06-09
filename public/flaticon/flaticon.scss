@@ -1,0 +1,45 @@
+$flaticon-font: "flaticon";
+
+@font-face {
+    font-family: $flaticon-font;
+    src: url("./flaticon.ttf?3ea6a012dc96ac112599a6aeebf8772d") format("truetype"),
+url("./flaticon.woff?3ea6a012dc96ac112599a6aeebf8772d") format("woff"),
+url("./flaticon.woff2?3ea6a012dc96ac112599a6aeebf8772d") format("woff2"),
+url("./flaticon.eot?3ea6a012dc96ac112599a6aeebf8772d#iefix") format("embedded-opentype"),
+url("./flaticon.svg?3ea6a012dc96ac112599a6aeebf8772d#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon-map: (
+    "confetti": "\f101",
+    "friends": "\f102",
+    "flags": "\f103",
+    "board-game": "\f104",
+    "settings": "\f105",
+);
+
+.flaticon-confetti:before {
+    content: map-get($flaticon-map, "confetti");
+}
+.flaticon-friends:before {
+    content: map-get($flaticon-map, "friends");
+}
+.flaticon-flags:before {
+    content: map-get($flaticon-map, "flags");
+}
+.flaticon-board-game:before {
+    content: map-get($flaticon-map, "board-game");
+}
+.flaticon-settings:before {
+    content: map-get($flaticon-map, "settings");
+}

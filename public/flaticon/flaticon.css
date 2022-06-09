@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("./flaticon.ttf?3ea6a012dc96ac112599a6aeebf8772d") format("truetype"),
+url("./flaticon.woff?3ea6a012dc96ac112599a6aeebf8772d") format("woff"),
+url("./flaticon.woff2?3ea6a012dc96ac112599a6aeebf8772d") format("woff2"),
+url("./flaticon.eot?3ea6a012dc96ac112599a6aeebf8772d#iefix") format("embedded-opentype"),
+url("./flaticon.svg?3ea6a012dc96ac112599a6aeebf8772d#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-confetti:before {
+    content: "\f101";
+}
+.flaticon-friends:before {
+    content: "\f102";
+}
+.flaticon-flags:before {
+    content: "\f103";
+}
+.flaticon-board-game:before {
+    content: "\f104";
+}
+.flaticon-settings:before {
+    content: "\f105";
+}

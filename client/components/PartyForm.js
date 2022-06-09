@@ -19,8 +19,8 @@ const PartyForm = () => {
   };
 
   return (
-    <form id="party-form" onSubmit={handleSubmit}>
-      <div>
+    <form className="party-form" onSubmit={handleSubmit}>
+      <div id="party-form-input">
         <label htmlFor="name">Party Name:</label>
         <input
           type="text"
@@ -29,7 +29,7 @@ const PartyForm = () => {
           onChange={(e) => setName(e.target.value)}
         />
       </div>
-      <div>
+      <div id="party-form-input">
         <label htmlFor="location">Location:</label>
         <input
           type="text"
@@ -38,7 +38,7 @@ const PartyForm = () => {
           onChange={(e) => setLocation(e.target.value)}
         />
       </div>
-      <div>
+      <div id="party-form-input">
         <label htmlFor="date">When:</label>
         <input
           type="datetime-local"

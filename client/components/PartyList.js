@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { fetchParties } from "../store/parties";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Party from "./Party";
 
@@ -18,11 +18,17 @@ const PartyList = () => {
 
   return (
     <div className="parties">
-      <h1>BG Parties</h1>
+      <h1 className="section-header">Your Parties</h1>
 
       <div className="party-list">
         {parties.map((party) => {
-          return <Party party={party} key={party.id} />;
+          return (
+            <div className="single-party" key={party.id}>
+              <Link to={`/party/${party.id}`} party={party}>
+                <Party party={party} key={party.id} />
+              </Link>
+            </div>
+          );
         })}
       </div>
     </div>

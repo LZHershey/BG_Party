@@ -23,6 +23,7 @@
     "@reduxjs/toolkit": "^1.8.2",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
+    "compass": "^0.1.1",
     "compression": "^1.7.3",
     "express": "^4.16.4",
     "history": "^4.9.0",

@@ -15,7 +15,7 @@ const setFriends = (friends) => {
 
 const _addFriend = (friends) => {
   return {
-    type: ADD_FRIENDS,
+    type: ADD_FRIEND,
     friends,
   };
 };
@@ -75,7 +75,6 @@ export const unfriend = (
       );
 
       dispatch(_unfriend(updatedPrimaryFriends.data));
-      history.push("/friends");
     } catch (error) {
       console.log(error);
     }
@@ -107,8 +106,6 @@ export const addFriend = (userId, username, history) => {
       );
 
       dispatch(_addFriend(updatedPrimaryFriends.data));
-      history.push("/");
-      history.push("/friends");
     } catch (error) {
       console.log(error);
     }
