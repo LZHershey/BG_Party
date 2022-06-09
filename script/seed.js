@@ -60,9 +60,9 @@ const games = [
     complexity: "complex",
   },
   {
-    name: "Dumb Ass",
+    name: "Exploding Kittens",
     minPlayers: 2,
-    maxPlayers: 4,
+    maxPlayers: 6,
     duration: "30-60 min",
     playStyle: ["party"],
     complexity: "easy",
@@ -116,19 +116,25 @@ const seed = async () => {
         return User.create(user);
       })
     );
-    const [terraforming, spiritIsland, dumbAss, clank, wingspan, root] =
-      await Promise.all(
-        games.map((game) => {
-          return Game.create(game);
-        })
-      );
+    const [
+      terraforming,
+      spiritIsland,
+      explodingKittens,
+      clank,
+      wingspan,
+      root,
+    ] = await Promise.all(
+      games.map((game) => {
+        return Game.create(game);
+      })
+    );
     const [fridayNight, dateNight] = await Promise.all(
       parties.map((party) => {
         return Party.create(party);
       })
     );
 
-    await lauren.addGames([terraforming, dumbAss]);
+    await lauren.addGames([terraforming, explodingKittens]);
     await david.addGames([spiritIsland]);
     await maria.addGames([root, clank]);
     await mike.addGames([wingspan]);

@@ -49,7 +49,7 @@ const FriendList = () => {
           );
         })}
       </div>
-      <div id="add-friend">
+      <div id="add-friend-game">
         <h2>Add Friend</h2>
         <label htmlFor="addUsername">Friend's Username:</label>
         <input

@@ -111,8 +111,7 @@ form div {
   flex-direction: column;
   align-content: center;
   align-items: center;
-  background-color: #1bbbf4;
-  border: dashed #7a49a9;
+  border: dashed #7a49a9 3px;
   margin-top: 3em;
 }
 
@@ -181,12 +180,16 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around
+  justify-content: space-between
 }
 
 .game-list{
   display: flex;
-  flex: row wrap;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  justify-items: space-between;
+  align-content:center;
+  align-items: center;
 }
 
 .ind-game{
@@ -315,4 +318,29 @@ input {
 .complexity-levels{
   display: flex;
   justify-content: space-around;
+}
+
+.friends{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.friend-list{
+  display: flex;
+  flex: row wrap;
+}
+
+#ind-friend{
+  text-align: center;
+  height: 7em;
+  width: 12em;
+  margin: 2em;
+}
+
+#add-friend-game{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  height: 12em;
 }

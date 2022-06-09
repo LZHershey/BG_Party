@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import PlayPreferences from "./Categories";
-import { updatePreferences } from "../store/preferences";
+import Categories from "./Categories";
+import { createNewGame } from "../store/games";
 
 const PrefForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const userId = useSelector((state) => state.auth.id);
+  const [name, setGameName] = useState("");
+  const [minPlayers, setMinPlayers] = useState("");
+  const [maxPlayers, setMaxPlayers] = useState("");
   const [duration, setDuration] = useState("");
   const [complexity, setComplexity] = useState("");
   const categories = useSelector((state) => state.tempCategories);
@@ -16,14 +19,57 @@ const PrefForm = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     dispatch(
-      updatePreferences(userId, duration, complexity, categories, history)
+      createNewGame(
+        userId,
+        name,
+        minPlayers,
+        maxPlayers,
+        duration,
+        complexity,
+        categories,
+        history
+      )
     );
   };
 
   return (
     <form id="pref-form" onSubmit={handleSubmit}>
+      <h1>Input New Game</h1>
       <div>
-        <label htmlFor="duration">Duration:</label>
+        <label htmlFor="name" className="form-label">
+          Name:
+        </label>
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={(e) => setGameName(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="minPlayers" className="form-label">
+          Min players:
+        </label>
+        <input
+          type="number"
+          name="minPlayers"
+          value={minPlayers}
+          onChange={(e) => setMinPlayers(e.target.value)}
+        />
+        <label htmlFor="maxPlayers" className="form-label">
+          Max players:
+        </label>
+        <input
+          type="number"
+          name="maxPlayers"
+          value={maxPlayers}
+          onChange={(e) => setMaxPlayers(e.target.value)}
+        />
+      </div>
+      <div>
+        <label className="form-label" htmlFor="duration">
+          Duration:
+        </label>
         <select
           name="duration"
           value={duration}
@@ -34,32 +80,40 @@ const PrefForm = () => {
           <option value="2-3 hrs">2-3 hours</option>
           <option value="3+ hrs">3+ hours</option>
         </select>
-        <PlayPreferences />
-        <label htmlFor="complex">Complexity:</label>
-        <input
-          type="radio"
-          name="complex"
-          value="easy"
-          onChange={() => setComplexity("easy")}
-        />{" "}
-        Easy <br />
-        <input
-          type="radio"
-          name="complex"
-          value="moderate"
-          onChange={() => setComplexity("moderate")}
-        />{" "}
-        Moderate <br />
-        <input
-          type="radio"
-          name="complex"
-          value="complex"
-          onChange={() => setComplexity("complex")}
-        />{" "}
-        Complex <br />
-        <div>
-          <button type="submit">Submit</button>
+      </div>
+      <div>
+        <Categories />
+      </div>
+      <div>
+        <label className="form-label" htmlFor="complex">
+          Complexity:
+        </label>
+        <div className="complexity-levels">
+          <input
+            type="radio"
+            name="complex"
+            value="easy"
+            onChange={() => setComplexity("easy")}
+          />{" "}
+          Easy <br />
+          <input
+            type="radio"
+            name="complex"
+            value="moderate"
+            onChange={() => setComplexity("moderate")}
+          />{" "}
+          Moderate <br />
+          <input
+            type="radio"
+            name="complex"
+            value="complex"
+            onChange={() => setComplexity("complex")}
+          />{" "}
+          Complex <br />
         </div>
+      </div>
+      <div>
+        <button type="submit">Submit</button>
       </div>
     </form>
   );
